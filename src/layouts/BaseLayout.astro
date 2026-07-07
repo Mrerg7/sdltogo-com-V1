@@ -126,6 +126,9 @@ const structuredData = {
     />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {SITE.googleSiteVerification && (
+      <meta name="google-site-verification" content={SITE.googleSiteVerification} />
+    )}
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
