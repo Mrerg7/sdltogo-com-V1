@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+
+const valueProps = (await getCollection('valueProps')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="max-w-5xl mx-auto px-6 pt-16 pb-12" id="why">
+  <div class="max-w-2xl">
+    <div class="uppercase tracking-[2px] text-xs font-semibold text-amber-brand mb-3">THE OPPORTUNITY</div>
+    <h2 class="text-5xl tracking-tighter font-semibold font-display">
+      Own the definitive domain<br />for Scottsdale "to go" services.
+    </h2>
+    <p class="mt-5 text-lg text-slate-600">
+      sdltogo.com is short, powerful, and instantly communicates premium delivery and on-site service. It
+      positions the owner as the go-to brand for custom catering, party setup, event staffing, and cleanup
+      services in Scottsdale's affluent and event-rich market.
+    </p>
+  </div>
+
+  <div class="mt-12 grid md:grid-cols-3 gap-5">
+    {
+      valueProps.map((prop) => (
+        <div class="value-card bg-white border border-slate-200 rounded-3xl p-7">
+          <div class="text-amber-brand text-xs tracking-widest font-semibold mb-3">{prop.data.label}</div>
+          <div class="font-semibold text-xl tracking-tight">{prop.data.title}</div>
+          <p class="mt-3 text-sm text-slate-600">{prop.data.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

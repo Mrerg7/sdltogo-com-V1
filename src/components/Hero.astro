@@ -1,0 +1,70 @@
+---
+import { ACQUISITION_MAILTO, cfImageUrl, CF_IMAGES } from '../config/site';
+
+const heroImage = cfImageUrl(CF_IMAGES.heroImageId);
+---
+
+<header class="relative min-h-[620px] md:min-h-[680px] flex items-center overflow-hidden bg-slate-950">
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url('${heroImage}')`}
+    aria-hidden="true"
+  >
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/30"></div>
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-6 pt-8 md:pt-0">
+    <div class="max-w-3xl">
+      <div
+        class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-3xl mb-8"
+      >
+        <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+        <span class="text-xs font-semibold tracking-[1.5px] text-white/90"
+          >PREMIUM SERVICE DOMAIN • SCOTTSDALE, AZ</span
+        >
+      </div>
+
+      <h1 class="text-white">
+        <span class="block font-bold tracking-tighter domain-name">sdltogo.com</span>
+      </h1>
+
+      <p class="mt-4 max-w-xl text-2xl text-white/90 tracking-tight">
+        The premium domain for custom delivery, catering,<br />and premium event staffing in Scottsdale, Arizona.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a
+          href={ACQUISITION_MAILTO}
+          class="px-10 py-4 bg-white text-slate-900 hover:bg-amber-50 font-semibold rounded-3xl text-base transition-all active:scale-[0.985] shadow-xl"
+        >
+          Inquire to Purchase
+        </a>
+        <a
+          href="#market"
+          class="px-8 py-4 border border-white/30 hover:bg-white/10 text-white font-semibold rounded-3xl text-base transition-all"
+        >
+          Explore the Scottsdale Event Market
+        </a>
+      </div>
+
+      <div class="mt-8 flex items-center gap-x-6 text-xs text-white/60">
+        <div>Short • Memorable • Service-Focused</div>
+        <div class="w-px h-3 bg-white/30"></div>
+        <div>Delivery • Catering • Event Staffing</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="border-b border-slate-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-5">
+    <div
+      class="flex flex-wrap justify-center md:justify-between items-center gap-x-8 gap-y-3 text-sm text-center md:text-left"
+    >
+      <div>Scottsdale: Premier market for luxury private events, catering &amp; premium service</div>
+      <div class="hidden md:block text-slate-300">•</div>
+      <div>High demand for reliable, high-end event staffing and setup</div>
+    </div>
+  </div>
+</div>
