@@ -1,5 +1,5 @@
 ---
-import { ACQUISITION_MAILTO, SITE } from '../config/site';
+import { ACQUISITION_MAILTO, DOMAIN_PRICE, SITE } from '../config/site';
 ---
 
 <section id="acquire" class="bg-slate-900 py-12 sm:py-16">
@@ -13,6 +13,12 @@ import { ACQUISITION_MAILTO, SITE } from '../config/site';
     <p class="mt-4 text-white/70 max-w-md mx-auto">
       Premium service-oriented domains that perfectly describe delivery, catering, and event staffing in
       high-demand luxury markets are rare. Contact us for confidential discussion.
+    </p>
+    <p class="mt-5 text-amber-200/90 text-lg sm:text-xl font-semibold tracking-tight">
+      Asking price: {DOMAIN_PRICE.display}
+      <span class="block mt-1 text-sm font-normal text-white/50">
+        Digital domain transfer &bull; No shipping fees &bull; Final sale upon transfer
+      </span>
     </p>
 
     <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

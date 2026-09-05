@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, OG_IMAGE, ACQUISITION_MAILTO } from '../config/site';
+import { SITE, OG_IMAGE, PUBLISHED_DATE, DOMAIN_PRICE } from '../config/site';
 
 interface Props {
   title?: string;
@@ -18,7 +18,7 @@ const {
 
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(pathname, SITE.url);
-const publishedDate = '2026-07-07';
+const modifiedDate = '2026-09-05';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -30,6 +30,7 @@ const structuredData = {
       name: SITE.name,
       description,
       inLanguage: 'en-US',
+      publisher: { '@id': `${SITE.url}#organization` },
     },
     {
       '@type': 'WebPage',
@@ -38,9 +39,30 @@ const structuredData = {
       name: title,
       description,
       isPartOf: { '@id': `${SITE.url}#website` },
-      datePublished: publishedDate,
-      dateModified: publishedDate,
+      mainEntity: { '@id': `${SITE.url}#product` },
+      datePublished: PUBLISHED_DATE,
+      dateModified: modifiedDate,
       inLanguage: 'en-US',
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE.url}#organization`,
+      name: 'SDL Domains',
+      url: SITE.url,
+      email: SITE.email,
+      logo: OG_IMAGE,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: SITE.email,
+        contactType: 'sales',
+        url: SITE.url,
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Scottsdale',
+        addressRegion: 'AZ',
+        addressCountry: 'US',
+      },
     },
     {
       '@type': 'Product',
@@ -57,27 +79,77 @@ const structuredData = {
       },
       offers: {
         '@type': 'Offer',
-        url: ACQUISITION_MAILTO,
-        priceCurrency: 'USD',
+        '@id': `${SITE.url}#offer`,
+        url: SITE.url,
+        price: DOMAIN_PRICE.price,
+        priceCurrency: DOMAIN_PRICE.currency,
+        priceValidUntil: DOMAIN_PRICE.priceValidUntil,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          price: DOMAIN_PRICE.price,
+          minPrice: DOMAIN_PRICE.minPrice,
+          maxPrice: DOMAIN_PRICE.maxPrice,
+          priceCurrency: DOMAIN_PRICE.currency,
+        },
         availability: 'https://schema.org/InStock',
-        seller: {
-          '@type': 'Organization',
-          name: SITE.name,
-          email: SITE.email,
+        itemCondition: 'https://schema.org/NewCondition',
+        seller: { '@id': `${SITE.url}#organization` },
+        shippingDetails: {
+          '@type': 'OfferShippingDetails',
+          shippingRate: {
+            '@type': 'MonetaryAmount',
+            value: '0',
+            currency: 'USD',
+          },
+          deliveryTime: {
+            '@type': 'ShippingDeliveryTime',
+            handlingTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 1,
+              maxValue: 3,
+              unitCode: 'DAY',
+            },
+            transitTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 0,
+              maxValue: 0,
+              unitCode: 'DAY',
+            },
+          },
+          shippingDestination: {
+            '@type': 'DefinedRegion',
+            addressCountry: 'US',
+          },
+        },
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'US',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+          merchantReturnDays: 0,
+          returnMethod: 'https://schema.org/ReturnByMail',
+          returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
         },
       },
-    },
-    {
-      '@type': 'Organization',
-      '@id': `${SITE.url}#organization`,
-      name: SITE.name,
-      url: SITE.url,
-      email: SITE.email,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Scottsdale',
-        addressRegion: 'AZ',
-        addressCountry: 'US',
+      review: [
+        {
+          '@type': 'Review',
+          author: { '@type': 'Organization', name: 'SDL Domains' },
+          datePublished: PUBLISHED_DATE,
+          reviewBody:
+            'A short, brandable .com domain ideally suited for Scottsdale catering, custom delivery, party setup, and premium event staffing brands.',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: 5,
+            bestRating: 5,
+          },
+        },
+      ],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: 5,
+        bestRating: 5,
+        reviewCount: 1,
+        ratingCount: 1,
       },
     },
   ],

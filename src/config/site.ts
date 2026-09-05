@@ -21,6 +21,18 @@ export function cfImageUrl(imageId: string, variant = 'public'): string {
 
 export const OG_IMAGE = cfImageUrl(CF_IMAGES.heroImageId);
 
+export const PUBLISHED_DATE = '2026-07-07';
+
+/** Asking price for Product/Offer structured data (USD). */
+export const DOMAIN_PRICE = {
+  price: '19995.00',
+  minPrice: 12995,
+  maxPrice: 19995,
+  currency: 'USD',
+  priceValidUntil: '2027-12-31',
+  display: '$19,995',
+} as const;
+
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent('sdltogo.com Domain Acquisition Inquiry')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring sdltogo.com.\n\nIntended use:\nBudget range:\n\nThank you.')}`;
 
 export const DISCLAIMER_DATE = 'July 7, 2026';
