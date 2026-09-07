@@ -5,8 +5,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-slate-50 text-slate-800 overflow-x-hidden font-sans antialiased;
+    @apply bg-slate-50 text-base text-slate-800 overflow-x-hidden font-sans antialiased;
   }
 }
 

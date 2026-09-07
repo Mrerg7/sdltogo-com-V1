@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found | sdltogo.com" noindex={true}>
+  <main class="min-h-[70vh] flex items-center justify-center px-4">
+    <div class="text-center max-w-lg">
+      <p class="text-sm font-semibold tracking-widest text-amber-brand uppercase mb-3">404</p>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+        Page not found
+      </h1>
+      <p class="text-base text-slate-600 mb-8">
+        The page you requested is not available. Return to the sdltogo.com domain listing.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center min-h-[48px] px-8 py-3.5 bg-slate-900 hover:bg-black text-white font-semibold rounded-3xl text-base transition-all"
+      >
+        Back to homepage
+      </a>
+    </div>
+  </main>
+</BaseLayout>
