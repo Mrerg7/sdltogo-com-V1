@@ -29,6 +29,7 @@ export const DOMAIN_PRICE = {
   minPrice: 12995,
   maxPrice: 19995,
   currency: 'USD',
+  validFrom: PUBLISHED_DATE,
   priceValidUntil: '2027-12-31',
   display: '$19,995',
 } as const;
